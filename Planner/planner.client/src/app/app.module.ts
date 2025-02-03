@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { RootStateModule } from './state/root-state.module';
 import { AuthModule } from './page/auth/auth.module';
 import { AuthStateModule } from './state/auth-store/auth-state.module';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,12 @@ import { AuthStateModule } from './state/auth-store/auth-state.module';
     AppRoutingModule,
     AuthModule,
     RootStateModule,
-    AuthStateModule
+    AuthStateModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
