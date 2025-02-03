@@ -131,6 +131,10 @@ dist
 
 # visual studion
 /Planner/.vs/
+
+#rider
+/planner/.idea/*
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../../state/auth-store';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -9,15 +10,21 @@ import { AuthService } from '../../../../state/auth-store';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  email: string = '';
-  password: string = '';
-  confirmPassword: string = '';
+  email = new FormControl();
+  password = new FormControl();
+  confirmPassword = new FormControl();
   errorMessage: string = '';
 
   constructor(private authService: AuthService) {}
 
   onSubmit() {
-    this.authService.register(this.email, this.password).subscribe(
+    if (this.password.value != this.confirmPassword.value) {
+      // TODO - proper password confirmation validation
+      this.errorMessage = 'passwords don\'t match';
+      return;
+    }
+
+    this.authService.register(this.email.value, this.password.value).subscribe(
       (response) => {
         alert('Registration successful');
       },
