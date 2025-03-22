@@ -18,14 +18,17 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   login(): void {
-    this.authService.login(this.email, this.password).subscribe(
-      (response) => {
+    this.authService.login(this.email, this.password).subscribe({
+      next: (response) => {
         this.authService.saveToken(response.token);
         this.router.navigate(['/home']); // Navigate to a protected route after login
       },
-      (error) => {
+      error: (error) => {
         this.errorMessage = 'Invalid login credentials';
+      },
+      complete: () => {
+        console.log('Login complete');
       }
-    );
+    });
   }
 }

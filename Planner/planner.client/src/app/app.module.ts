@@ -8,6 +8,7 @@ import { AuthModule } from './page/auth/auth.module';
 import { AuthStateModule } from './state/auth-store/auth-state.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AuthModule,
     RootStateModule,
     AuthStateModule,
-    NgbModule
+    NgbModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [
     provideAnimationsAsync()

@@ -16,7 +16,7 @@ public class PlannerDbContext : IdentityDbContext<ApplicationUser>
 
         var schema = "IAM";
         builder.Entity<ApplicationUser>().ToTable(nameof(ApplicationUser)+"s", schema);
-        builder.HasDefaultSchema(schema);
+        builder.HasDefaultSchema("dbo");
         // TODO - IAM is the schema for all the identity stuff. Use a different schema for the Planner
     }
 }

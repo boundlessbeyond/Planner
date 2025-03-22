@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Planner.Api.Infrastructure.Data;
@@ -11,6 +12,16 @@ using Planner.Domain.Entities;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllHeaders",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -27,10 +38,11 @@ builder.Services.AddIdentityCore<ApplicationUser>()
     .AddApiEndpoints();
 
 builder.Services.AddDbContextFactory<PlannerDbContext>(options =>
-    options.UseSqlServer());
+    options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(PlannerDbContext))));
 builder.Services.AddSingleton<PlannerDbContextFactory>();
 
 var app = builder.Build();
+app.UseCors("AllowAllHeaders");
 
 app.UseDefaultFiles();
 app.UseStaticFiles();

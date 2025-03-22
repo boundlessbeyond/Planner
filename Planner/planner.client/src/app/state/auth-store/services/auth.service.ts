@@ -16,7 +16,8 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'login', { email, password });
+    const result = this.http.post<any>(this.apiUrl + 'login', { email, password });
+    return result;
   }
 
   saveToken(token: string): void {

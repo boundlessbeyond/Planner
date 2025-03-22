@@ -24,13 +24,13 @@ export class RegisterComponent {
       return;
     }
 
-    this.authService.register(this.email.value, this.password.value).subscribe(
-      (response) => {
+    this.authService.register(this.email.value, this.password.value).subscribe({
+      next: (response) => {
         alert('Registration successful');
       },
-      (error) => {
+      error: (error) => {
         this.errorMessage = 'Registration failed. Please try again.';
       }
-    );
+    });
   }
 }
