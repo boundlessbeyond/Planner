@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RootStateModule } from './state/root-state.module';
@@ -9,6 +8,7 @@ import { AuthStateModule } from './state/auth-store/auth-state.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
+import { LayoutModule } from './page/layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { StoreModule } from '@ngrx/store';
     RootStateModule,
     AuthStateModule,
     NgbModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({}, {}),
+    LayoutModule
   ],
   providers: [
     provideAnimationsAsync()

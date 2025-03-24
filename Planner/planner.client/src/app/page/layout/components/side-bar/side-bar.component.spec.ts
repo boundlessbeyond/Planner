@@ -6,15 +6,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { SideNavComponent } from './side-nav.component';
+import { SideBarComponent } from './side-bar.component';
 
 describe('SideNavComponent', () => {
-  let component: SideNavComponent;
-  let fixture: ComponentFixture<SideNavComponent>;
+  let component: SideBarComponent;
+  let fixture: ComponentFixture<SideBarComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [SideNavComponent],
+      declarations: [SideBarComponent],
       imports: [
         NoopAnimationsModule,
         MatButtonModule,
@@ -27,7 +27,7 @@ describe('SideNavComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SideNavComponent);
+    fixture = TestBed.createComponent(SideBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
